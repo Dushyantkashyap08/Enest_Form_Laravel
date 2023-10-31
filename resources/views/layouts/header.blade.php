@@ -32,17 +32,6 @@
 							<input type="button" name="logout" value="Log Out :{{Auth::guard('signup')->user()->fullname}}">
 						</a>
                         @endif
-
-					{{-- @if (!Auth::login($data)->check())
-                        <!-- Show the "Login First" button when the user is not authenticated -->
-                        <a href="{{ url('/') }}">
-                            <input type="button" name="login" value="Log In">
-                        </a>
-                    @else
-						<a href="{{ route('logout') }}">
-							<input type="button" name="logout" value="Log Out :{{Auth::guard('signup')->user()->fullname}}">
-						</a>
-                        @endif --}}
 				</div>
 				<!--btn ends here-->
 			</div>

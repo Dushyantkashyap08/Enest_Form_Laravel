@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ViewController;
 use App\Http\Controllers\CrudController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GoogleController;
 /*
 |--------------------------------------------------------------------------
@@ -15,28 +15,31 @@ use App\Http\Controllers\GoogleController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/addproduct/{id}',[ViewController::class, 'addproduct']);
-Route::post('/cart_add',[ViewController::class, 'cart_add'])->name('cart_add');
-// Route::get('/buynow',[ViewController::class, 'buynow_view']);
-Route::get('buynow/{id}',[ViewController::class, 'buynow']);
-Route::get('/home',[ViewController::class, 'home']);
-// Route::get('/productadd',[ViewController::class, 'productadd']);
-Route::get('/contactus',[ViewController::class, 'contactus']);
-Route::get('/',[ViewController::class, 'login']);
+Route::get('/addproduct/{id}',[CrudController::class, 'addproduct']);
+
+Route::post('/cart_add',[CrudController::class, 'cart_add'])->name('cart_add');
+
+Route::get('buynow/{id}',[CrudController::class, 'buynow']);
+
+Route::get('/home',[CrudController::class, 'home']);
+
+Route::get('/contactus',[CrudController::class, 'contactus']);
+
+Route::get('/',[CrudController::class, 'login']);
 
 
 // signup table
-Route::post('signup',[CrudController::class, 'signup'])->name('signup');
+Route::post('signup',[LoginController::class, 'signup'])->name('signup');
 
 //Login page
-Route::post('login-data',[CrudController::class, 'login_data'])->name('login.form');
+Route::post('login-data',[LoginController::class, 'login_data']);
 
 //logout route
-Route::get('logout',[CrudController::class, 'logout'])->name('logout');
+Route::get('logout',[LoginController::class, 'logout'])->name('logout');
 
 // Google URL
 Route::get('google/login',[GoogleController::class,'provider'])->name('google.login');

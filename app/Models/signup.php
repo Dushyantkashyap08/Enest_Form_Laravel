@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
 
-class signup extends Model implements Authenticatable
+class Signup extends Model implements Authenticatable
 {
     use HasFactory;
     use AuthenticatableTrait;

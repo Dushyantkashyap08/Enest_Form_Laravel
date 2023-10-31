@@ -27,20 +27,23 @@
             
             <!--contact starts here-->
             <div class="contact">
+
                 <!--contact-us starts here-->
                 <div class="contact-us">
                     <p>FEATURED PRODUCTS</p>
                 </div>
                 <!--contact-us ends here-->
+
                 @foreach($products as $product)
-                <!--Camera-info starts here-->
-                <div class="Camera-info">
-                    <!-- samsung-cam starts here-->
+                    <!--Camera-info starts here-->
+                    <div class="Camera-info">
+                        <!-- samsung-cam starts here-->
                         <div class="samsung-cam">
 
                             <!-- cam-info starts here-->
                             <div class="cam-info">
                                 <img src="{{asset($product->pimage)}}">
+
                                 <!-- sam-prc starts here-->
                                 <div class="sam-prc">
                                     <span>{{$product->pname}}</span>
@@ -59,19 +62,25 @@
                                     <input type="submit" name="" value="Add to cart">
                                 </div>
                                 <!-- cart-btn ends here-->
+
                             </div>
                             <!-- cam-info ends here-->
 
                         </div>
-                    <!-- samsung-cam ends here-->
-                </div>
-                <!-- camera-info ends here-->
+                        <!-- samsung-cam ends here-->
+
+                    </div>
+                    <!-- camera-info ends here-->
                 @endforeach
+
             </div>
             <!--contact ends here-->
+
         </div>
         <!--main-content ends here-->
+
     </div>        
     <!--main-categorious ends here-->
+    
 @endsection
 <!--home-section ends here-->

@@ -1,54 +1,91 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\signup;
+
+use App\Models\Category;
+use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\hash;
 use Illuminate\Support\Facades\Auth;
-use App\Models\category;
-use Illuminate\Support\Facades\session;
 
 class CrudController extends Controller
 {
-    public function signup(Request $request)
+    //login controller
+    public function login()
     {
-        $add = new signup;
-        if($request->isMethod('POST'))
-        {
-            $add->fullname = $request->get('fname');
-            $add->email = $request->get('email');
-            $add->password = hash::make($request->get('password'));
-            $add->save();
-        }
         return view('login');
-    }
-
-    public function login_data(Request $request)
-    {
-        $request->validate([
-            'fullname' => 'required',
-            'password' => 'required',
-        ]);
-
-        $credentials=$request->only('fullname','password');
-
-       if (Auth::guard('signup')->attempt($credentials)){
-            // Authentication successful
-          return redirect()->intended('home');
-        }
-        return redirect("/")->with('error', 'Oops! You have entered invalid credentials');
         
     }
 
+    //addproduct function
+    public function addproduct(Request $request, $id)
+    {
+        $user =Auth::guard('signup')->user();
+        $userId=$user->id;
+        $data = Category::all();
+        $products=Product::where('id',$id)->get();
+        return view('add-product', compact('data', 'products','userId'));
+    }
 
-    public function logout(){
-        Session::flush();
-        Auth::logout();
-  
-        return Redirect('/');
+    //home function
+    public function home()
+    {
+        $products = Product::inRandomOrder()->limit(6)->get(); // Retrieve 6 random products
+        $data = Category::all();
+    
+        return view('home', compact('data', 'products'));
+    }
+    
+    //contactus function
+    public function contactus()
+    {
+        $data = Category::all();
+        return view('contact-us', compact('data'));
+    }
+
+    //buynow function
+    public function buynow(Request $request, $id)
+    {
+        $data = Category::all();
+        $category=Category::where('id',$id)->get();
+        $product = Product::where('category_id', $id)->get();
+        return view('buy-now', compact( 'data','category','product'));
     }
 
 
+    //cart_add function
+    public function cart_add(Request $request)
+    {
+       $uid = $request->get('userid');
+       $prodid = $request->get('productid');
+     $prodstock = $request->get('productstock');
+        $qty = $request->get('quantity');
 
-    
+
+        $add = new Cart;
+        if($request->isMethod('POST'))
+        {
+            if($qty>0 && $qty<=$prodstock)
+            {
+                Product::where('id',$prodid)->decrement('pstock', $qty);
+                $add->userid = $uid;
+                $add->productid = $prodid;
+                $add->quantity = $qty;
+         
+                $add->save();
+            }
+            
+            elseif(empty($qty))
+            {
+                return redirect()->back()->with('errorr','Please enter a quantity');
+            }
+            else
+            {
+                return redirect()->back()->with('error','Quantity must be within the range');
+            }
+        }
+      return redirect()->back()->with('Success','Added to cart successfully');
+
+    }
+
 }

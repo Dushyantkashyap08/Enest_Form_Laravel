@@ -35,5 +35,5 @@ return [
         'client_id' => '849961860363-4cthukir5n0o2fusl6cnrvadp86qp91j.apps.googleusercontent.com',
         'client_secret' => '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',
         'redirect' =>'http://localhost/Enest_Laravel_Project/public/google/callback',
-    ]
+    ],
 ];

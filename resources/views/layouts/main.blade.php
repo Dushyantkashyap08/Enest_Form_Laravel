@@ -3,10 +3,9 @@
 <!--layouts.header ends here-->
 
     <!--yield section starts here-->
-    @yield('buynow')
-    @yield('addproduct')
-    @yield('contactus')
-    @yield('productadd')
+    @yield('buy-now')
+    @yield('add-product')
+    @yield('contact-us')
     @yield('login')
     @yield('home')
     <!--yield section ends here-->

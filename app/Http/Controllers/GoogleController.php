@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\signup; // Import the Signup model
+use App\Models\signup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;

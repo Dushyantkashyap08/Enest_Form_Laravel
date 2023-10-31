@@ -14,13 +14,16 @@
 
         <!--login-here starts here-->
         <div class="login-here">
+
             <!--login starts here-->
             <div class="login">
                 <p>Login Here</p>
+
                 <!--user-info starts here-->
                 <div  class="user-info">
+
                     <!--form starts here-->
-                    <form method="post" action="{{route('login.form')}}">
+                    <form method="post" action="{{url('login-data')}}">
                         @csrf
                         <!--home-section starts here-->
                         <table class="login-1">
@@ -50,18 +53,22 @@
                             
                             <tr class="google-login-btn">
                                 <td></td>
-                                <td><a href="{{Route('google.login')}}" >Login With Google</a></td>
+                                <td><a href="{{route('google.login')}}" >Login With Google</a></td>
                             </tr>
                         </table>
                         <!--login-1 ends here-->
                     </form>
                     <!--form ends here-->
+
                 </div>
                 <!--user-info ends here-->
+
             </div>
             <!--login ends here-->
+            
         </div>
         <!--login-here ends here-->
+
     </div>
     <!--main-content ends here-->
 
@@ -96,13 +103,18 @@
                         </tr>
                     </table>
                     <!--login-1 ends here-->
+
                 </form>
                 <!--form ends here-->
+
             </div>
             <!--user-info ends here-->
+
         </div>
         <!--sign ends here-->
+
     </div>
     <!--sign-up ends here-->
+    
 @endsection
 <!--login-section ends here-->
