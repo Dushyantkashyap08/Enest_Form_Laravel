@@ -8,7 +8,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CrudController extends Controller
+class CrudOperationsController extends Controller
 {
     //login controller
     public function login()

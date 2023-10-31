@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CrudController;
+use App\Http\Controllers\CrudOperationsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GoogleController;
 /*
@@ -19,17 +19,17 @@ use App\Http\Controllers\GoogleController;
 //     return view('welcome');
 // });
 
-Route::get('/addproduct/{id}',[CrudController::class, 'addproduct']);
+Route::get('/addproduct/{id}',[CrudOperationsController::class, 'addproduct']);
 
-Route::post('/cart_add',[CrudController::class, 'cart_add'])->name('cart_add');
+Route::post('/cart_add',[CrudOperationsController::class, 'cart_add'])->name('cart_add');
 
-Route::get('buynow/{id}',[CrudController::class, 'buynow']);
+Route::get('buynow/{id}',[CrudOperationsController::class, 'buynow']);
 
-Route::get('/home',[CrudController::class, 'home']);
+Route::get('/home',[CrudOperationsController::class, 'home']);
 
-Route::get('/contactus',[CrudController::class, 'contactus']);
+Route::get('/contactus',[CrudOperationsController::class, 'contactus']);
 
-Route::get('/',[CrudController::class, 'login']);
+Route::get('/',[CrudOperationsController::class, 'login']);
 
 
 // signup table
